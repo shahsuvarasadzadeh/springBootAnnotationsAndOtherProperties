@@ -1,6 +1,8 @@
 package com.imjavadeveloper.controller;
 
 
+import com.imjavadeveloper.FirstClass;
+import com.imjavadeveloper.SecondClass;
 import com.imjavadeveloper.dto.User;
 import com.imjavadeveloper.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +16,19 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserController {
     @Autowired
     private UserService userService;
+    @Autowired
+    private FirstClass firstClass;
+    @Autowired
+    private SecondClass secondClass;
+
+    @GetMapping(path = "/first-class")
+    public String getNameOfFirstClass(){
+        return firstClass.getName();
+    }
+    @GetMapping(path = "/second-class")
+    public String getNameOfSecondClass(){
+        return secondClass.getName();
+    }
 
     @GetMapping(path = "/users/{UserId}")
     public User getUserId(@PathVariable("UserId") Long userId) {
