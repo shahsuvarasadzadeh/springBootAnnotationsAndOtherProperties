@@ -2,10 +2,12 @@ package com.imjavadeveloper.controller;
 
 
 import com.imjavadeveloper.FirstClass;
+import com.imjavadeveloper.Reader;
 import com.imjavadeveloper.SecondClass;
 import com.imjavadeveloper.dto.User;
 import com.imjavadeveloper.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,13 +22,40 @@ public class UserController {
     private FirstClass firstClass;
     @Autowired
     private SecondClass secondClass;
+    @Qualifier("PDF")
+    @Autowired
+    private Reader reader;
+
+    @Qualifier("EXCEL")
+    @Autowired
+    private Reader getreader1;
+
+    @Qualifier("WORD")
+    @Autowired
+    private Reader getreader2;
+    
+    @GetMapping("/read-PDF")
+    public String read(){
+        return reader.readFile();
+    }
+
+    @GetMapping("/read-EXCEL")
+    public String read1(){
+        return getreader1.readFile();
+    }
+    @GetMapping("/read-WORD")
+    public String read2(){
+        return getreader2.readFile();
+    }
+
 
     @GetMapping(path = "/first-class")
-    public String getNameOfFirstClass(){
+    public String getNameOfFirstClass() {
         return firstClass.getName();
     }
+
     @GetMapping(path = "/second-class")
-    public String getNameOfSecondClass(){
+    public String getNameOfSecondClass() {
         return secondClass.getName();
     }
 

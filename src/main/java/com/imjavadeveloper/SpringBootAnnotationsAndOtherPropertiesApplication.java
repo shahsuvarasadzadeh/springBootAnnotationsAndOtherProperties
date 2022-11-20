@@ -16,4 +16,9 @@ public class SpringBootAnnotationsAndOtherPropertiesApplication {
         return new SecondClass();
     }
 
+    @Bean("WORD")
+    public WordFileRead getWordFile(){
+        return new WordFileRead();
+    }
+
 }
