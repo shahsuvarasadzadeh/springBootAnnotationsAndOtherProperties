@@ -4,6 +4,7 @@ package com.imjavadeveloper.controller;
 import com.imjavadeveloper.FirstClass;
 import com.imjavadeveloper.Reader;
 import com.imjavadeveloper.SecondClass;
+import com.imjavadeveloper.SetterInjection;
 import com.imjavadeveloper.dto.User;
 import com.imjavadeveloper.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,9 +42,17 @@ public class UserController {
     @Autowired
     private Reader fieldInjection;
 
-    @GetMapping("/field-injection")
+
+    private SetterInjection setterInjection;
+
+    @Autowired
+    public void setSetterInjection(SetterInjection setterInjection) {
+        this.setterInjection = setterInjection;
+    }
+
+    @GetMapping("/injection")
     public String read5(){
-        return fieldInjection.readFile();
+        return this.fieldInjection.readFile()+ "  -  "+this.setterInjection.readFile();
     }
 
 
