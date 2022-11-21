@@ -2,6 +2,7 @@ package com.imjavadeveloper.controller;
 
 
 import com.imjavadeveloper.*;
+import com.imjavadeveloper.config.MyConfiguration;
 import com.imjavadeveloper.dto.User;
 import com.imjavadeveloper.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,6 +44,32 @@ public class UserController {
 
     private ConstructorInjection constructorInjection;
 
+    private MyConfiguration myConfiguration;
+
+    @Autowired
+    private Example1 example1;
+
+
+//    public UserController(Example1 example1) {
+//        this.example1 = example1;
+//    }
+
+    @Autowired
+    private MyComponentLazy myComponentLazy;
+
+
+
+    @GetMapping("/lazy")
+    public String getMyComponent(){
+        return myComponentLazy.getName();
+    }
+
+
+
+    @Autowired
+    public UserController(MyConfiguration myConfiguration) {
+        this.myConfiguration = myConfiguration;
+    }
 
     // Setter Injection
     @Autowired
