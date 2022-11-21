@@ -38,6 +38,15 @@ public class UserController {
     private Reader testReader;
 
 
+    @Autowired
+    private Reader fieldInjection;
+
+    @GetMapping("/field-injection")
+    public String read5(){
+        return fieldInjection.readFile();
+    }
+
+
     @GetMapping("/read")
     public String read3(){
         return testReader.readFile();
