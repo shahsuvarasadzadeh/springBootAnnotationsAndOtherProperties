@@ -33,7 +33,15 @@ public class UserController {
     @Qualifier("WORD")
     @Autowired
     private Reader getreader2;
-    
+
+    @Autowired
+    private Reader testReader;
+
+
+    @GetMapping("/read")
+    public String read3(){
+        return testReader.readFile();
+    }
     @GetMapping("/read-PDF")
     public String read(){
         return reader.readFile();
