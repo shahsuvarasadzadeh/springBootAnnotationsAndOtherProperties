@@ -1,4 +1,4 @@
-package com.imjavadeveloper;
+package com.imjavadeveloper.qualifier;
 
 import org.springframework.stereotype.Component;
 

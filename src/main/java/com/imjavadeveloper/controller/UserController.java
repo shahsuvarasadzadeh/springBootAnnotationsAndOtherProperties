@@ -4,6 +4,7 @@ package com.imjavadeveloper.controller;
 import com.imjavadeveloper.*;
 import com.imjavadeveloper.config.MyConfiguration;
 import com.imjavadeveloper.dto.User;
+import com.imjavadeveloper.qualifier.Reader;
 import com.imjavadeveloper.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -24,17 +25,7 @@ public class UserController {
     private FirstClass firstClass;
     @Autowired
     private SecondClass secondClass;
-    @Qualifier("PDF")
-    @Autowired
-    private Reader reader;
 
-    @Qualifier("EXCEL")
-    @Autowired
-    private Reader getreader1;
-
-    @Qualifier("WORD")
-    @Autowired
-    private Reader getreader2;
 
     @Autowired
     private Reader testReader;
@@ -114,19 +105,7 @@ public class UserController {
     public String read3() {
         return testReader.readFile();
     }
-    @GetMapping("/read-PDF")
-    public String read(){
-        return reader.readFile();
-    }
 
-    @GetMapping("/read-EXCEL")
-    public String read1(){
-        return getreader1.readFile();
-    }
-    @GetMapping("/read-WORD")
-    public String read2(){
-        return getreader2.readFile();
-    }
 
 
     @GetMapping(path = "/first-class")
