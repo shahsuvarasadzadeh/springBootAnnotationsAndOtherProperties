@@ -1,4 +1,4 @@
-package com.imjavadeveloper.service;
+package com.imjavadeveloper.componentInter;
 
 import com.imjavadeveloper.dto.User;
 

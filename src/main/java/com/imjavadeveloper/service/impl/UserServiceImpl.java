@@ -1,7 +1,7 @@
 package com.imjavadeveloper.service.impl;
 
 import com.imjavadeveloper.dto.User;
-import com.imjavadeveloper.service.UserService;
+import com.imjavadeveloper.componentInter.UserService;
 import org.springframework.stereotype.Service;
 
 @Service

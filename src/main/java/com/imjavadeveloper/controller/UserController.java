@@ -2,12 +2,13 @@ package com.imjavadeveloper.controller;
 
 
 import com.imjavadeveloper.*;
+import com.imjavadeveloper.componentInter.Reader;
+import com.imjavadeveloper.componentInter.UserService;
 import com.imjavadeveloper.config.MyConfiguration;
 import com.imjavadeveloper.dto.User;
-import com.imjavadeveloper.qualifier.Reader;
-import com.imjavadeveloper.service.UserService;
+import com.imjavadeveloper.injections.ConstructorInjection;
+import com.imjavadeveloper.injections.SetterInjection;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.ApplicationContext;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -26,19 +27,16 @@ public class UserController {
     @Autowired
     private SecondClass secondClass;
 
+    private MyConfiguration myConfiguration;
+
 
     @Autowired
     private Reader testReader;
     //Field Injection
-    @Autowired
-    private Reader fieldInjection;
 
 
-    private SetterInjection setterInjection;
 
-    private ConstructorInjection constructorInjection;
 
-    private MyConfiguration myConfiguration;
 
     @Autowired
     private Example1 example1;
@@ -82,29 +80,16 @@ public class UserController {
         this.myConfiguration = myConfiguration;
     }
 
-    // Setter Injection
-    @Autowired
-    public void setSetterInjection(SetterInjection setterInjection) {
-        this.setterInjection = setterInjection;
-    }
 
 
-    //Constructor Injection
-    public UserController(ConstructorInjection constructorInjection) {
-        this.constructorInjection = constructorInjection;
-    }
-
-    @GetMapping("/injection")
-    public String read5() {
-        return this.fieldInjection.readFile() + "  -  " + this.setterInjection.readFile()
-                + "  -  " + this.constructorInjection.readFile();
-    }
 
 
-    @GetMapping("/read")
-    public String read3() {
-        return testReader.readFile();
-    }
+
+
+
+
+
+
 
 
 
